@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letícia Bahia Secchieri — Psicopedagoga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #F7F2EB;
+  --offwhite: #FDFAF6;
+  --terracotta: #C4714A;
+  --terra-light: #E8A98A;
+  --terra-pale: #F2DDD2;
+  --forest: #4A6B55;
+  --forest-light: #7A9E85;
+  --forest-pale: #D0E3D5;
+  --ink: #2C2018;
+  --ink-mid: #6B4F3A;
+  --ink-light: #A88A78;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--offwhite);
+  color:var(--ink);
+  font-family:'Outfit', sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999; opacity:0.5;
+}
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:22px 64px;
+  display:flex; justify-content:space-between; align-items:center;
+  background:linear-gradient(to bottom, rgba(253,250,246,0.97) 60%, transparent);
+}
+.nav-logo { font-family:'Cormorant Garamond', serif; font-size:1.05rem; letter-spacing:0.05em; color:var(--ink); }
+.nav-logo span { color:var(--terracotta); font-style:italic; }
+.nav-links { list-style:none; display:flex; gap:40px; }
+.nav-links a { text-decoration:none; color:var(--ink-mid); font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; transition:color .3s; }
+.nav-links a:hover { color:var(--terracotta); }
+.nav-cta { background:var(--terracotta) !important; color:white !important; padding:8px 20px; }
+.nav-cta:hover { background:var(--ink) !important; color:white !important; }
+/* HERO */
+.hero { min-height:100vh; display:grid; grid-template-columns:1.1fr 0.9fr; position:relative; overflow:hidden; }
+.hero-left { padding:150px 64px 80px; display:flex; flex-direction:column; justify-content:center; position:relative; z-index:2; }
+.hero-tag { display:inline-flex; align-items:center; gap:10px; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--forest); margin-bottom:32px; opacity:0; animation:fadeUp .7s .2s forwards; }
+.hero-tag::before { content:''; width:28px; height:1px; background:var(--forest); }
+h1.hero-title { font-family:'Cormorant Garamond', serif; font-size:clamp(3rem,5.5vw,4.8rem); line-height:1.1; font-weight:600; color:var(--ink); margin-bottom:10px; opacity:0; animation:fadeUp .8s .35s forwards; }
+h1.hero-title em { font-style:italic; color:var(--terracotta); }
+.hero-subtitle-line { font-family:'Cormorant Garamond', serif; font-size:clamp(1.3rem,2.2vw,1.7rem); font-style:italic; color:var(--ink-mid); margin-bottom:32px; opacity:0; animation:fadeUp .8s .5s forwards; }
+.hero-desc { font-size:0.97rem; line-height:1.8; color:var(--ink-mid); max-width:430px; margin-bottom:48px; opacity:0; animation:fadeUp .8s .65s forwards; }
+.hero-actions { display:flex; gap:16px; flex-wrap:wrap; opacity:0; animation:fadeUp .8s .8s forwards; }
+.btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--terracotta); color:white; padding:15px 32px; text-decoration:none; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; transition:all .3s; }
+.btn-primary:hover { background:var(--ink); gap:16px; }
+.btn-secondary { display:inline-flex; align-items:center; gap:10px; border:1.5px solid var(--forest); color:var(--forest); padding:14px 28px; text-decoration:none; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; transition:all .3s; }
+.btn-secondary:hover { background:var(--forest); color:white; }
+.hero-right { position:relative; overflow:hidden; background:linear-gradient(160deg, var(--forest-pale) 0%, var(--terra-pale) 55%, var(--sand) 100%); }
+.hero-photo-wrap { position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; }
+.hero-photo-placeholder { width:75%; max-width:340px; aspect-ratio:3/4; background:linear-gradient(180deg,rgba(74,107,85,0.15) 0%,rgba(196,113,74,0.2) 100%); border-top-left-radius:200px; border-top-right-radius:200px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; border:2px dashed rgba(196,113,74,0.3); opacity:0; animation:fadeIn 1s 1s forwards; }
+.photo-icon { font-size:3rem; opacity:0.4; }
+.photo-note { font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-mid); opacity:0.6; text-align:center; line-height:1.6; padding:0 20px; }
+.hero-chip { position:absolute; background:rgba(253,250,246,0.93); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.7); padding:16px 20px; opacity:0; animation:fadeIn 1s forwards; }
+.hero-chip-1 { bottom:22%; left:6%; animation-delay:1.2s; }
+.hero-chip-2 { top:16%; right:6%; animation-delay:1.5s; }
+.chip-val { font-family:'Cormorant Garamond', serif; font-size:1.9rem; color:var(--terracotta); line-height:1; }
+.chip-label { font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-mid); line-height:1.4; margin-top:4px; }
+/* SECTIONS */
+.sec { padding:96px 64px; }
+.sec-tag { font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--terracotta); display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.sec-tag::before { content:''; width:22px; height:1px; background:var(--terracotta); }
+.sec-tag.green { color:var(--forest); }
+.sec-tag.green::before { background:var(--forest); }
+h2.sec-title { font-family:'Cormorant Garamond', serif; font-size:clamp(2rem,3.8vw,3rem); line-height:1.2; font-weight:600; color:var(--ink); }
+h2.sec-title em { font-style:italic; color:var(--terracotta); }
+h2.sec-title em.g { color:var(--forest); }
+/* ABOUT */
+.about { background:var(--sand); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.about-text p { font-size:0.97rem; line-height:1.85; color:var(--ink-mid); margin-top:26px; }
+.about-text p+p { margin-top:14px; }
+.about-right { display:flex; flex-direction:column; gap:14px; }
+.cred { display:flex; align-items:center; gap:18px; padding:18px 22px; background:var(--offwhite); border-left:3px solid var(--terracotta); transition:transform .25s; }
+.cred:hover { transform:translateX(8px); }
+.cred.gb { border-left-color:var(--forest); }
+.cred-icon { width:38px; height:38px; border-radius:50%; background:var(--terra-pale); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+.cred.gb .cred-icon { background:var(--forest-pale); }
+.cred-body strong { display:block; font-size:0.87rem; font-weight:500; color:var(--ink); margin-bottom:2px; }
+.cred-body span { font-size:0.77rem; color:var(--ink-light); }
+/* SERVICES */
+.services { background:var(--offwhite); }
+.services-intro { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:56px; }
+.services-intro-desc { font-size:0.97rem; line-height:1.8; color:var(--ink-mid); padding-top:16px; border-top:1px solid rgba(44,32,24,0.1); }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.srv { background:var(--sand); padding:36px 32px; position:relative; overflow:hidden; transition:background .35s; cursor:default; }
+.srv::after { content:''; position:absolute; bottom:0; left:0; width:0; height:3px; background:var(--terracotta); transition:width .4s; }
+.srv:hover { background:var(--terra-pale); }
+.srv:hover::after { width:100%; }
+.srv-num { font-family:'Cormorant Garamond', serif; font-size:2.8rem; line-height:1; color:rgba(44,32,24,0.07); margin-bottom:16px; transition:color .3s; }
+.srv:hover .srv-num { color:rgba(196,113,74,0.2); }
+.srv-icon { font-size:1.4rem; margin-bottom:12px; }
+.srv-name { font-family:'Cormorant Garamond', serif; font-size:1.2rem; font-weight:600; color:var(--ink); margin-bottom:10px; }
+.srv-desc { font-size:0.85rem; line-height:1.75; color:var(--ink-mid); }
+/* QUIZ */
+.quiz-section { background:var(--ink); color:var(--sand); padding:96px 64px; position:relative; overflow:hidden; }
+.quiz-section::before { content:''; position:absolute; width:600px; height:600px; border-radius:50%; background:var(--forest); opacity:0.07; top:-250px; right:-200px; filter:blur(100px); }
+.quiz-inner { max-width:680px; margin:0 auto; text-align:center; position:relative; z-index:2; }
+.quiz-section .sec-tag { justify-content:center; color:var(--terra-light); }
+.quiz-section .sec-tag::before { background:var(--terra-light); }
+.quiz-section h2.sec-title { color:var(--sand); margin-bottom:12px; }
+.quiz-section h2.sec-title em { color:var(--terra-light); }
+.quiz-sub { font-size:0.93rem; line-height:1.8; color:var(--ink-light); margin-bottom:48px; }
+.quiz-wrap { position:relative; min-height:220px; }
+.quiz-screen { display:none; }
+.quiz-screen.active { display:block; }
+#q-start .start-icon { font-size:3rem; margin-bottom:20px; }
+#q-start p { font-size:1rem; color:var(--ink-light); line-height:1.8; margin-bottom:32px; }
+.quiz-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:36px 40px; text-align:left; }
+.q-progress { display:flex; gap:6px; margin-bottom:28px; }
+.q-dot { height:3px; flex:1; background:rgba(255,255,255,0.15); transition:background .3s; }
+.q-dot.done { background:var(--terracotta); }
+.q-dot.active { background:var(--terra-light); }
+.q-num { font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--terra-light); margin-bottom:10px; }
+.q-text { font-family:'Cormorant Garamond', serif; font-size:1.35rem; color:var(--sand); line-height:1.5; margin-bottom:28px; }
+.q-options { display:flex; flex-direction:column; gap:10px; }
+.q-opt { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); padding:14px 20px; cursor:pointer; font-family:'Outfit', sans-serif; font-size:0.9rem; color:var(--sand); text-align:left; transition:all .25s; display:flex; align-items:center; gap:12px; }
+.q-opt:hover { background:rgba(196,113,74,0.15); border-color:var(--terracotta); }
+.q-opt.correct { background:rgba(74,107,85,0.25); border-color:var(--forest-light); }
+.q-opt.wrong { background:rgba(196,113,74,0.2); border-color:var(--terracotta); }
+.q-opt-icon { font-size:1.1rem; flex-shrink:0; }
+.q-feedback { margin-top:20px; padding:16px 20px; background:rgba(255,255,255,0.06); border-left:3px solid var(--terra-light); font-size:0.88rem; line-height:1.7; color:var(--ink-light); display:none; }
+.q-feedback.show { display:block; }
+.btn-quiz { margin-top:20px; background:var(--terracotta); color:white; border:none; padding:12px 28px; cursor:pointer; font-family:'Outfit', sans-serif; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; transition:background .3s; display:none; }
+.btn-quiz:hover { background:var(--forest); }
+.btn-quiz.show { display:inline-block; }
+.btn-start-quiz { background:var(--terracotta); color:white; border:none; padding:14px 36px; cursor:pointer; font-family:'Outfit', sans-serif; font-size:0.82rem; letter-spacing:0.12em; text-transform:uppercase; transition:all .3s; }
+.btn-start-quiz:hover { background:var(--forest); }
+.quiz-result { text-align:center; padding:20px 0; }
+.result-score { font-family:'Cormorant Garamond', serif; font-size:5rem; color:var(--terra-light); line-height:1; margin-bottom:8px; }
+.result-label { font-family:'Cormorant Garamond', serif; font-size:1.6rem; color:var(--sand); margin-bottom:20px; }
+.result-msg { font-size:0.92rem; line-height:1.8; color:var(--ink-light); max-width:460px; margin:0 auto 28px; }
+.result-cta { display:inline-flex; align-items:center; gap:10px; background:var(--terracotta); color:white; text-decoration:none; padding:14px 30px; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; transition:all .3s; }
+.result-cta:hover { background:var(--forest); gap:16px; }
+/* PROCESS */
+.process { background:var(--sand); }
+.process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:36px; margin-top:56px; position:relative; }
+.process-grid::before { content:''; position:absolute; top:22px; left:22px; right:22px; height:1px; background:linear-gradient(to right, var(--terracotta), var(--terra-light), transparent); }
+.pstep { position:relative; padding-top:52px; }
+.pstep-dot { position:absolute; top:12px; left:0; width:18px; height:18px; border-radius:50%; background:var(--sand); border:2px solid var(--terracotta); z-index:1; }
+.pstep-dot::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; border-radius:50%; background:var(--terracotta); }
+.pstep-n { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--terracotta); margin-bottom:8px; }
+.pstep-title { font-family:'Cormorant Garamond', serif; font-size:1.1rem; font-weight:600; color:var(--ink); margin-bottom:8px; }
+.pstep-desc { font-size:0.84rem; line-height:1.75; color:var(--ink-mid); }
+/* MEMORY SECONDARY */
+.memory-secondary { background:var(--forest-pale); padding:96px 64px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.memory-desc { font-size:0.95rem; line-height:1.85; color:var(--ink-mid); margin-top:22px; }
+.memory-signs { display:flex; flex-direction:column; gap:2px; margin-top:6px; }
+.msign { display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid rgba(74,107,85,0.15); font-size:0.88rem; color:var(--ink-mid); }
+.msign-dot { width:7px; height:7px; border-radius:50%; background:var(--forest); flex-shrink:0; }
+.memory-cta-wrap { margin-top:28px; }
+/* TESTIMONIAL */
+.testimonial { background:var(--offwhite); padding:80px 64px; text-align:center; }
+.testimonial-inner { max-width:640px; margin:0 auto; }
+.testimonial-quote { font-family:'Cormorant Garamond', serif; font-size:clamp(1.4rem,2.5vw,1.9rem); font-style:italic; line-height:1.6; color:var(--ink); margin-bottom:28px; position:relative; }
+.testimonial-quote::before { content:'\201C'; font-size:6rem; line-height:0.7; color:var(--terra-pale); position:absolute; top:10px; left:-30px; font-family:'Cormorant Garamond', serif; }
+.testimonial-author { display:flex; align-items:center; justify-content:center; gap:14px; }
+.author-line { width:32px; height:1px; background:var(--terracotta); }
+.author-name { font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-mid); }
+/* CONTACT */
+.contact { background:var(--ink); color:var(--sand); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.contact .sec-tag { color:var(--terra-light); }
+.contact .sec-tag::before { background:var(--terra-light); }
+.contact h2.sec-title { color:var(--sand); }
+.contact h2.sec-title em { color:var(--terra-light); }
+.contact-desc { font-size:0.95rem; line-height:1.85; color:var(--ink-light); margin-top:22px; max-width:380px; }
+.modalities { display:flex; gap:10px; margin-top:26px; }
+.mod-badge { padding:7px 16px; border:1px solid rgba(255,255,255,0.2); font-size:0.73rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--terra-light); }
+.contact-cards { display:flex; flex-direction:column; gap:14px; }
+.contact-card { display:flex; align-items:center; gap:18px; padding:20px 24px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-decoration:none; color:var(--sand); transition:all .3s; }
+.contact-card:hover { background:rgba(196,113,74,0.12); border-color:var(--terracotta); transform:translateX(6px); }
+.c-icon { width:42px; height:42px; border-radius:50%; background:var(--terracotta); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+.c-label { font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-light); margin-bottom:3px; }
+.c-val { font-size:0.95rem; }
+/* FOOTER */
+footer { background:#1C140D; padding:28px 64px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-brand { font-family:'Cormorant Garamond', serif; font-size:1rem; color:rgba(247,242,235,0.55); }
+.footer-brand span { font-style:italic; color:var(--terra-light); }
+.footer-copy { font-size:0.75rem; color:rgba(247,242,235,0.25); }
+/* REVEAL */
+.rv { opacity:0; transform:translateY(28px); transition:opacity .7s, transform .7s; }
+.rv.vis { opacity:1; transform:translateY(0); }
+.rv2 { opacity:0; transform:translateY(28px); transition:opacity .7s .15s, transform .7s .15s; }
+.rv2.vis { opacity:1; transform:translateY(0); }
+.rv3 { opacity:0; transform:translateY(28px); transition:opacity .7s .3s, transform .7s .3s; }
+.rv3.vis { opacity:1; transform:translateY(0); }
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@media(max-width:900px){
+  nav{padding:18px 24px;} .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;} .hero-left{padding:120px 24px 60px;} .hero-right{display:none;}
+  .sec,.quiz-section,.contact,.memory-secondary,.testimonial{padding:64px 24px;}
+  .about,.services-intro,.contact,.memory-secondary{grid-template-columns:1fr;gap:40px;}
+  .services-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr 1fr;} .process-grid::before{display:none;}
+  footer{padding:24px;flex-direction:column;text-align:center;}
+  .quiz-card{padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Letícia Bahia <span>Secchieri</span></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#memoria">Adultos & Idosos</a></li>
+    <li><a href="#contato" class="nav-cta">Agendar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Psicopedagogia Clínica · São Paulo</div>
+    <h1 class="hero-title">Cada criança<br>aprende do seu<br><em>jeito único</em></h1>
+    <p class="hero-subtitle-line">E merece ser compreendida assim.</p>
+    <p class="hero-desc">Avaliação e intervenção psicopedagógica clínica infantil, orientação parental e cuidado com a memória em adultos e idosos — com escuta acolhedora e olhar especializado.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5511982801775" class="btn-primary" target="_blank">Agendar consulta →</a>
+      <a href="#servicos" class="btn-secondary">Conhecer serviços</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <!-- Para colocar sua foto: substitua a div abaixo por <img src="sua-foto.jpg" style="width:75%;max-width:340px;object-fit:cover;border-radius:200px 200px 0 0;"> -->
+      <div class="hero-photo-placeholder">
+        <div class="photo-icon">📷</div>
+        <div class="photo-note">Insira sua foto<br>profissional aqui</div>
+      </div>
+    </div>
+    <div class="hero-chip hero-chip-1">
+      <div class="chip-val">∞</div>
+      <div class="chip-label">Abordagem<br>individualizada</div>
+    </div>
+    <div class="hero-chip hero-chip-2">
+      <div class="chip-val">2</div>
+      <div class="chip-label">Online &<br>Presencial</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about sec" id="sobre">
+  <div class="about-text">
+    <div class="sec-tag rv">Sobre mim</div>
+    <h2 class="sec-title rv">Uma escuta que <em>acolhe</em> e transforma</h2>
+    <p class="rv">Sou Letícia Bahia Secchieri, Psicopedagoga e Orientadora Parental. Meu trabalho é compreender como cada criança aprende — e apoiar as famílias nesse processo com presença, empatia e conhecimento clínico.</p>
+    <p class="rv2">Acredito que por trás de toda dificuldade de aprendizagem há uma história que merece ser ouvida com cuidado. Minha prática une rigor técnico a um olhar genuinamente humano.</p>
+    <p class="rv3">Atuo também no cuidado com a memória e funcionamento cognitivo em adultos e idosos, ampliando o suporte às famílias em todas as fases da vida.</p>
+  </div>
+  <div class="about-right rv">
+    <div class="cred"><div class="cred-icon">🎓</div><div class="cred-body"><strong>Psicopedagoga Clínica</strong><span>Avaliação e intervenção infantil</span></div></div>
+    <div class="cred"><div class="cred-icon">👨‍👩‍👧</div><div class="cred-body"><strong>Orientadora Parental</strong><span>Suporte e orientação às famílias</span></div></div>
+    <div class="cred gb"><div class="cred-icon">🧠</div><div class="cred-body"><strong>Cognição em Adultos e Idosos</strong><span>Memória, atenção e funcionamento cognitivo</span></div></div>
+    <div class="cred gb"><div class="cred-icon">💻</div><div class="cred-body"><strong>Online & Presencial</strong><span>Flexibilidade para a sua rotina</span></div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services sec" id="servicos">
+  <div class="services-intro">
+    <div>
+      <div class="sec-tag rv">Serviços principais</div>
+      <h2 class="sec-title rv">Psicopedagogia &amp; <em>Orientação Parental</em></h2>
+    </div>
+    <p class="services-intro-desc rv">O acompanhamento é realizado de forma individual, respeitando o ritmo e as necessidades de cada criança e família. O objetivo é sempre promover aprendizagem, autoconhecimento e qualidade de vida.</p>
+  </div>
+  <div class="services-grid">
+    <div class="srv rv"><div class="srv-num">01</div><div class="srv-icon">🔍</div><div class="srv-name">Avaliação Psicopedagógica</div><p class="srv-desc">Investigação das capacidades de aprendizagem, identificando aspectos cognitivos, emocionais e pedagógicos que influenciam o processo escolar da criança.</p></div>
+    <div class="srv rv2"><div class="srv-num">02</div><div class="srv-icon">🌱</div><div class="srv-name">Intervenção Clínica Infantil</div><p class="srv-desc">Acompanhamento terapêutico individualizado para crianças com dificuldades de aprendizagem, dislexia, TDAH, ansiedade escolar e outros desafios do desenvolvimento.</p></div>
+    <div class="srv rv3"><div class="srv-num">03</div><div class="srv-icon">👨‍👩‍👧</div><div class="srv-name">Orientação Parental</div><p class="srv-desc">Suporte para pais e cuidadores compreenderem o desenvolvimento dos filhos, manejarem desafios comportamentais e construírem vínculos mais saudáveis e seguros.</p></div>
+    <div class="srv rv"><div class="srv-num">04</div><div class="srv-icon">📖</div><div class="srv-name">Dificuldades de Leitura e Escrita</div><p class="srv-desc">Identificação e intervenção em dislexia, disgrafia, disortografia e outras dificuldades de linguagem escrita e oral.</p></div>
+    <div class="srv rv2"><div class="srv-num">05</div><div class="srv-icon">🎯</div><div class="srv-name">Atenção e Concentração</div><p class="srv-desc">Estratégias para crianças com TDAH e outras dificuldades de regulação atencional, promovendo autonomia e melhor desempenho escolar.</p></div>
+    <div class="srv rv3"><div class="srv-num">06</div><div class="srv-icon">🤝</div><div class="srv-name">Devolutiva e Orientação Escolar</div><p class="srv-desc">Comunicação com escolas e professores para alinhar estratégias e garantir suporte integral à criança em todos os ambientes.</p></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-section" id="quiz">
+  <div class="quiz-inner">
+    <div class="sec-tag">Quiz interativo</div>
+    <h2 class="sec-title">Você conhece os sinais de alerta no <em>desenvolvimento infantil?</em></h2>
+    <p class="quiz-sub">Teste seus conhecimentos. São 5 perguntas rápidas, cada uma com uma explicação clínica ao final.</p>
+    <div class="quiz-wrap">
+      <div class="quiz-screen active" id="q-start">
+        <div class="start-icon">🧩</div>
+        <p>Cada resposta vem acompanhada de uma explicação. Ao final, você recebe uma mensagem personalizada.</p>
+        <button class="btn-start-quiz" onclick="startQuiz()">Começar quiz →</button>
+      </div>
+      <div class="quiz-screen" id="q-question">
+        <div class="quiz-card">
+          <div class="q-progress" id="q-progress"></div>
+          <div class="q-num" id="q-num"></div>
+          <div class="q-text" id="q-text"></div>
+          <div class="q-options" id="q-options"></div>
+          <div class="q-feedback" id="q-feedback"></div>
+          <button class="btn-quiz" id="btn-next" onclick="nextQ()">Próxima →</button>
+        </div>
+      </div>
+      <div class="quiz-screen" id="q-result">
+        <div class="quiz-result">
+          <div class="result-score" id="result-score"></div>
+          <div class="result-label" id="result-label"></div>
+          <p class="result-msg" id="result-msg"></p>
+          <a href="https://wa.me/5511982801775" class="result-cta" target="_blank">Conversar com a Letícia →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process sec">
+  <div class="sec-tag rv">Como funciona</div>
+  <h2 class="sec-title rv">O caminho do <em>acompanhamento</em></h2>
+  <div class="process-grid">
+    <div class="pstep rv"><div class="pstep-dot"></div><div class="pstep-n">Passo 01</div><div class="pstep-title">Primeiro contato</div><p class="pstep-desc">Uma conversa inicial para entender a demanda, a história da criança e as necessidades da família — sem julgamentos.</p></div>
+    <div class="pstep rv2"><div class="pstep-dot"></div><div class="pstep-n">Passo 02</div><div class="pstep-title">Avaliação completa</div><p class="pstep-desc">Sessões de avaliação psicopedagógica com instrumentos específicos para mapear o perfil de aprendizagem da criança.</p></div>
+    <div class="pstep rv3"><div class="pstep-dot"></div><div class="pstep-n">Passo 03</div><div class="pstep-title">Devolutiva familiar</div><p class="pstep-desc">Apresentação clara dos achados e do plano de intervenção, com espaço para todas as dúvidas da família.</p></div>
+    <div class="pstep rv"><div class="pstep-dot"></div><div class="pstep-n">Passo 04</div><div class="pstep-title">Intervenção contínua</div><p class="pstep-desc">Sessões semanais de intervenção psicopedagógica com reavaliações periódicas e orientação contínua aos pais.</p></div>
+  </div>
+</section>
+
+<!-- MEMORY SECONDARY -->
+<section class="memory-secondary" id="memoria">
+  <div>
+    <div class="sec-tag green rv">Serviço complementar</div>
+    <h2 class="sec-title rv">Cuidado com a memória em <em class="g">adultos e idosos</em></h2>
+    <p class="memory-desc rv">Além do trabalho com crianças e famílias, ofereço avaliação e estimulação cognitiva para adultos e idosos que percebem mudanças na memória, atenção ou funcionamento cognitivo do dia a dia.</p>
+    <p class="memory-desc rv2">Estresse, sobrecarga mental, ansiedade e sono inadequado — e não apenas a idade — podem influenciar diretamente esses processos. Observar é o primeiro passo para cuidar.</p>
+    <div class="memory-cta-wrap rv3">
+      <a href="https://wa.me/5511982801775" class="btn-secondary" target="_blank" style="border-color:var(--forest);color:var(--forest);">Saber mais sobre este serviço →</a>
+    </div>
+  </div>
+  <div>
+    <div class="memory-signs rv">
+      <div class="msign"><div class="msign-dot"></div>Entrar num cômodo e esquecer o que ia fazer</div>
+      <div class="msign"><div class="msign-dot"></div>Esquecer palavras no meio de conversas</div>
+      <div class="msign"><div class="msign-dot"></div>Dificuldade para lembrar nomes recentes</div>
+      <div class="msign"><div class="msign-dot"></div>Esquecer onde colocou objetos com frequência</div>
+      <div class="msign"><div class="msign-dot"></div>Mente mais cansada ou dispersa</div>
+      <div class="msign"><div class="msign-dot"></div>Dificuldade de foco e concentração</div>
+      <div class="msign"><div class="msign-dot"></div>Sensação de "branco" mais frequente</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="testimonial-inner">
+    <blockquote class="testimonial-quote rv">O desenvolvimento infantil não acontece em linha reta — e cada criança carrega consigo um universo de possibilidades que merece ser explorado com cuidado, paciência e conhecimento.</blockquote>
+    <div class="testimonial-author rv2">
+      <div class="author-line"></div>
+      <div class="author-name">Letícia Bahia Secchieri · Psicopedagoga</div>
+      <div class="author-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact sec" id="contato">
+  <div>
+    <div class="sec-tag">Contato</div>
+    <h2 class="sec-title">Vamos conversar sobre o seu <em>filho?</em></h2>
+    <p class="contact-desc">Atendimento individual, acolhedor e respeitoso. Entre em contato para entender como posso ajudar a sua família.</p>
+    <div class="modalities"><span class="mod-badge">Online</span><span class="mod-badge">Presencial</span></div>
+  </div>
+  <div class="contact-cards">
+    <a href="https://wa.me/5511982801775" class="contact-card" target="_blank"><div class="c-icon">💬</div><div><div class="c-label">WhatsApp</div><div class="c-val">(11) 98280-1775</div></div></a>
+    <a href="https://instagram.com/aprender.afeto" class="contact-card" target="_blank"><div class="c-icon">📷</div><div><div class="c-label">Instagram</div><div class="c-val">@aprender.afeto</div></div></a>
+    <div class="contact-card" style="cursor:default;"><div class="c-icon">🎓</div><div><div class="c-label">Especialidade</div><div class="c-val">Psicopedagogia & Orientação Parental</div></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Letícia Bahia <span>Secchieri</span></div>
+  <div class="footer-copy">Psicopedagogia Clínica · Orientação Parental · @aprender.afeto</div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold:0.1 });
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(el => obs.observe(el));
+
+// Quiz
+const questions = [
+  { q:"A partir de qual idade uma criança tipicamente deve conseguir sentar sem apoio?", opts:["2 meses","6 meses","12 meses","18 meses"], correct:1, feedback:"Por volta dos 6 meses a maioria das crianças consegue sentar sem apoio. Atrasos motores nessa janela merecem atenção do pediatra e avaliação especializada." },
+  { q:"Uma criança de 3 anos que ainda não forma frases de 2 ou mais palavras deve ser avaliada?", opts:["Não — cada criança tem seu ritmo e isso é sempre normal","Sim — a ausência de frases aos 3 anos é um sinal de alerta","Só precisa de avaliação após os 5 anos","Apenas se houver queixa formal na escola"], correct:1, feedback:"A linguagem é um dos marcadores mais importantes do desenvolvimento. Frases de 2 palavras devem surgir por volta dos 2 anos. Aos 3 anos sem isso, avaliação especializada é indicada." },
+  { q:"Dificuldade persistente para reconhecer letras aos 7 anos pode indicar:", opts:["Preguiça ou falta de interesse","Dislexia ou outra dificuldade de linguagem escrita","Que a criança precisa de mais lição de casa","Um problema exclusivamente pedagógico"], correct:1, feedback:"A dislexia é um transtorno neurológico — não é falta de esforço. O diagnóstico precoce e a intervenção psicopedagógica fazem enorme diferença no desenvolvimento da criança." },
+  { q:"Orientação parental pode ajudar quando a criança:", opts:["Apenas tem diagnóstico formal de TDAH ou autismo","Apresenta qualquer desafio de comportamento, sono ou aprendizagem","Só é indicada após fracasso escolar repetido","É exclusiva para crianças acima de 10 anos"], correct:1, feedback:"A orientação parental é preventiva e terapêutica. Auxilia pais a compreenderem e manejarem desde birras e limites até ansiedade e dificuldades escolares — em qualquer fase." },
+  { q:"Uma criança muito agitada e desatenta em casa e na escola, com baixo rendimento, deve:", opts:["Ser medicada imediatamente sem avaliação prévia","Ser avaliada por psicopedagogo e equipe multidisciplinar antes de qualquer intervenção","Apenas mudar de escola","Aguardar a adolescência para reavaliação"], correct:1, feedback:"Agitação e desatenção podem ter múltiplas origens — TDAH, ansiedade, dificuldades de aprendizagem, questões familiares. Uma avaliação cuidadosa é sempre o primeiro passo." }
+];
+
+let current=0, score=0, answered=false;
+
+function startQuiz(){
+  document.getElementById('q-start').classList.remove('active');
+  document.getElementById('q-question').classList.add('active');
+  renderQ();
+}
+
+function renderQ(){
+  answered=false;
+  const q=questions[current];
+  let prog='';
+  questions.forEach((_,i)=>{ let c=i<current?'done':i===current?'active':''; prog+=`<div class="q-dot ${c}"></div>`; });
+  document.getElementById('q-progress').innerHTML=prog;
+  document.getElementById('q-num').textContent=`Pergunta ${current+1} de ${questions.length}`;
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('q-feedback').className='q-feedback';
+  document.getElementById('q-feedback').textContent='';
+  document.getElementById('btn-next').classList.remove('show');
+  const opts=document.getElementById('q-options');
+  opts.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const btn=document.createElement('button');
+    btn.className='q-opt';
+    btn.innerHTML=`<span class="q-opt-icon">${['🅐','🅑','🅒','🅓'][i]}</span> ${o}`;
+    btn.onclick=()=>answer(i,btn);
+    opts.appendChild(btn);
+  });
+}
+
+function answer(idx,btn){
+  if(answered) return;
+  answered=true;
+  const q=questions[current];
+  document.querySelectorAll('.q-opt').forEach(b=>b.style.pointerEvents='none');
+  if(idx===q.correct){ btn.classList.add('correct'); score++; }
+  else { btn.classList.add('wrong'); document.querySelectorAll('.q-opt')[q.correct].classList.add('correct'); }
+  const fb=document.getElementById('q-feedback');
+  fb.textContent=(idx===q.correct?'✅ Correto! ':'❌ Não exatamente. ')+q.feedback;
+  fb.classList.add('show');
+  const nb=document.getElementById('btn-next');
+  nb.classList.add('show');
+  nb.textContent=current<questions.length-1?'Próxima →':'Ver resultado →';
+}
+
+function nextQ(){
+  current++;
+  if(current<questions.length){ renderQ(); }
+  else { showResult(); }
+}
+
+function showResult(){
+  document.getElementById('q-question').classList.remove('active');
+  document.getElementById('q-result').classList.add('active');
+  document.getElementById('result-score').textContent=`${score}/${questions.length}`;
+  let label,msg;
+  if(score===5){ label='Conhecimento excelente!'; msg='Você tem um olhar muito atento ao desenvolvimento infantil. Se tiver alguma dúvida sobre a sua criança, a Letícia está aqui para ajudar.'; }
+  else if(score>=3){ label='Bom conhecimento!'; msg='Você já tem uma boa base sobre desenvolvimento infantil. Sempre há nuances importantes — e é para isso que existe o acompanhamento especializado.'; }
+  else { label='Vale aprofundar!'; msg='O desenvolvimento infantil é um campo rico e cheio de detalhes. Que tal conversar com a Letícia para entender melhor o que observar no desenvolvimento do seu filho?'; }
+  document.getElementById('result-label').textContent=label;
+  document.getElementById('result-msg').textContent=msg;
+}
+</script>
+</body>
+</html>
